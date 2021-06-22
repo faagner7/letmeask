@@ -1,11 +1,11 @@
-function App() {
-  let number = 1
+// import { Home } from './pages/Home'
 
-  console.log(number)
+import { NewRoom } from './pages/NewRoom'
+
+function App() {
   return (
-    <div>
-      <span>Hello world!</span>
-    </div>
+  //  <Home />
+  <NewRoom />
   )
 }
 
