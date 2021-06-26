@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from 'react'
 import { firebase, auth } from '../services/firebase'
 
 interface UserProps {
-  id: String
-  name: String
-  avatar: String
+  id: string
+  name: string
+  avatar: string
 }
 interface AuthContextTypes {
   user: UserProps | undefined
