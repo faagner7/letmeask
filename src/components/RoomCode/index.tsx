@@ -1,22 +1,22 @@
-import copyImg from '../../assets/images/copy.svg'
+import copyImg from "../../assets/images/copy.svg";
 
-import '../../styles/room-code.scss'
+import "./styles.scss";
 
 interface RoomCodeProps {
-  code: string
+  code: string;
 }
 
 export function RoomCode({ code }: RoomCodeProps) {
   function copyRoomCodeToClipboard() {
-    navigator.clipboard.writeText(code)
+    navigator.clipboard.writeText(code);
   }
 
   return (
-    <button className='room-code' onClick={copyRoomCodeToClipboard}>
+    <button className="room-code" onClick={copyRoomCodeToClipboard}>
       <div>
-        <img src={copyImg} alt='Copy room code' />
+        <img src={copyImg} alt="Copy room code" />
       </div>
       <span>Sala #{code}</span>
     </button>
-  )
+  );
 }

@@ -14,6 +14,15 @@
       > img {
         max-height: 45px;
       }
+
+      > div {
+        display: flex;
+        gap: 16px;
+
+        > button {
+          height: 40px;
+        }
+      }
     }
   }
 
@@ -60,23 +69,45 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 16px;
-      }
 
-      span {
-        font-size: 14px;
-        color: #737380;
-        font-weight: 500;
+        .user-info {
+          display: flex;
+          align-items: center;
 
-        button {
-          background-color: transparent;
-          border: 0;
-          color: #835afd;
-          text-decoration: underline;
+          img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          }
+
+          span {
+            margin-left: 8px;
+            color: #29292e;
+            font-weight: 500;
+            font-size: 14px;
+          }
+        }
+
+        > span {
           font-size: 14px;
+          color: #737380;
           font-weight: 500;
-          cursor: pointer;
+
+          button {
+            background-color: transparent;
+            border: 0;
+            color: #835afd;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+          }
         }
       }
+    }
+
+    .question-list {
+      margin-top: 32px;
     }
   }
 }
