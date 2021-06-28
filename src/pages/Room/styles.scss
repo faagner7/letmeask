@@ -108,6 +108,16 @@
 
     .question-list {
       margin-top: 32px;
+
+      button.isAnswered {
+        color: #835afd;
+        svg circle {
+          stroke: #835afd;
+        }
+        svg path {
+          stroke: #835afd;
+        }
+      }
     }
   }
 }

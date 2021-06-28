@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 
 import logoImg from '../../assets/images/logo.svg'
 import deleteImg from '../../assets/images/delete.svg'
+import answerImg from '../../assets/images/answer.svg'
 
 import { Button } from '../../components/Button'
 import { RoomCode } from '../../components/RoomCode'
@@ -41,6 +42,24 @@ export function AdminRoom() {
     }
   }
 
+  async function handleHighlightQuestion(
+    questionId: string,
+    isHighlighted: boolean
+  ) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: !isHighlighted,
+    })
+  }
+
+  async function handleCheckQuestionAsAnswered(
+    questionId: string,
+    isAnswered: boolean
+  ) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: !isAnswered,
+    })
+  }
+
   return (
     <div id="page-room">
       <header>
@@ -72,7 +91,54 @@ export function AdminRoom() {
               key={question.id}
               content={question.content}
               author={question.author}
+              isHighlighted={question.isHighlighted}
+              isAnswered={question.isAnswered}
             >
+              <button
+                type="button"
+                className={`${question.isAnswered && 'isAnswered'}`}
+                onClick={() =>
+                  handleCheckQuestionAsAnswered(
+                    question.id,
+                    question.isAnswered
+                  )
+                }
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="12.0003"
+                    cy="11.9998"
+                    r="9.00375"
+                    stroke="#737380"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M8.44287 12.3391L10.6108 14.507L10.5968 14.493L15.4878 9.60193"
+                    stroke="#737380"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              {!question.isAnswered && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleHighlightQuestion(question.id, question.isHighlighted)
+                  }
+                >
+                  <img src={answerImg} alt="dar destaque para a pergunta" />
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => handleRemoveQuestion(question.id)}
